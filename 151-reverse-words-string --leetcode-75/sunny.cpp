@@ -1,3 +1,5 @@
+// a skeleton of a constant-memory solution
+
 class Solution {
 public:
     /**
