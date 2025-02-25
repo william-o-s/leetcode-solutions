@@ -1,6 +1,13 @@
 // a skeleton of a constant-memory solution
 
+#include <algorithm>
+#include <string>
+
+using std::string;
+using std::swap;
+
 class Solution {
+
 public:
     /**
         RUNTIME:
