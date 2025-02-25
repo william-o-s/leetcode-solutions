@@ -6,15 +6,6 @@
 
 Note, that tags must be written in alphabetical order in kebab-case.
 
-# Solution Structure
+# Explanation Structure
 
-Organise solutions by file name.  
-The solution can be in any language, but must be accompanied with a Markdown file that explains the "edge" of how to do the problem quickly, for example:
-
-```
-+ bob.cpp
-+ bob.md
-```
-
-
-
+Place a file called `explanation.md` that describes verbally how a solution works.
