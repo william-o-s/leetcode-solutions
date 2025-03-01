@@ -1,8 +1,6 @@
 #include <algorithm>
-#include <iostream>
 #include <vector>
 
-using std::cout;
 using std::max;
 using std::min;
 using std::vector;
@@ -12,7 +10,7 @@ public:
     template <typename T>
     class range_tree {
     public:
-    range_tree<T>(size_t n) : n_{n}, tree_{vector<T>(4 * n, 0)} {}
+    range_tree<T>(size_t n) : range_tree<T>(n, 4 * n) {}
 
     void update(size_t uL, size_t uR, T v) {
         _update(uL, uR, v, 1, 0, n_);
@@ -23,6 +21,8 @@ public:
     }
 
     private:
+    range_tree<T>(size_t n, size_t tree_size) : n_{n}, tree_{vector<T>(tree_size, 0)} {}
+
     void _update(size_t uL, size_t uR, T v, size_t i, size_t cL, size_t cR) {
         if (uL == cL && uR == cR) {
         tree_.at(i) += v;
@@ -50,7 +50,7 @@ public:
 
     bool checkArray(vector<int>& nums, int k) {
         auto n = static_cast<size_t>(nums.size());
-        auto debts = range_tree<int>(size_t(n));
+        auto debts = range_tree<int>(n);
         for (size_t i = 0; i < nums.size(); ++i) {
             int reduce = nums.at(i) - debts.query(i);
             if (reduce < 0) {
@@ -67,8 +67,6 @@ public:
                 }
             }
         }
-        for (auto ni : nums) cout << ni << ' ';
-        cout << '\n';
         return all_of(nums.begin(), nums.end(), [&nums](int const &ni){ return ni == 0; });
     }
 };
